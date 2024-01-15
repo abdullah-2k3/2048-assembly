@@ -2,24 +2,26 @@
 	jmp main
 	
 	
-clrscr:		push es 
-			push ax 
-			push di 
-			mov ax, 0xb800
-			mov es, ax 
-			mov di, 0 
+clrscr:		
+	push es 
+	push ax 
+	push di 
+	mov ax, 0xb800
+	mov es, ax 
+	mov di, 0 
 
 
-nextloc:	mov word [es:di], 0x0720 ; clear next char on screen 
-			add di, 2 ; move to next screen location 
-			cmp di, 4000 ; has the whole screen cleared 
-			jne nextloc ; if no clear next position 
+nextloc:	
+	mov word [es:di], 0x0720 ; clear next char on screen 
+	add di, 2 ; move to next screen location 
+	cmp di, 4000 ; has the whole screen cleared 
+	jne nextloc ; if no clear next position 
 
-			pop di 
-			pop ax 
-			pop es 
-			
-			ret
+	pop di 
+	pop ax 
+	pop es 
+	
+	ret
 	
 delay:
 	push cx
@@ -1030,7 +1032,8 @@ board_colors:  db 0x11
 colors: db 0x17, 0x12, 0x14, 0x1a, 0x1d, 0x1c, 0x1e
 
 
-board: dw 0, 0, 0, 0,
-	   dw 2, 0, 0, 0,
-	   dw 0, 0, 0, 0,
-	   dw 0, 0, 0, 0
+board:	   
+	dw 0, 0, 0, 0,
+	dw 2, 0, 0, 0,
+	dw 0, 0, 0, 0,
+	dw 0, 0, 0, 0
